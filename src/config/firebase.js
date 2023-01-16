@@ -1,3 +1,6 @@
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+
 export const firebaseConfig = {
     apiKey: "AIzaSyD9hwswYYhcIXVO0rG_AKn6tvSTdfMs828",
     authDomain: "notes-and-lists-app.firebaseapp.com",
@@ -8,3 +11,6 @@ export const firebaseConfig = {
     appId: "1:450396098109:web:bf8667ba11baa5283ba454",
     measurementId: "G-JNXZ0LLCMY"
 }
+
+const app = initializeApp(firebaseConfig);
+export const db = getDatabase(app);
