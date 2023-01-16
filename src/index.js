@@ -4,13 +4,6 @@ import "./styles/styles.scss";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// Firebase config
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from './config/firebase';
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
