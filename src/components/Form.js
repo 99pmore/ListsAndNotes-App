@@ -29,6 +29,7 @@ export const Form = () => {
 
             <div className='body'>
                 { currentComponent }
+                <button className='add-button'>Añadir</button>
             </div>
         </form>
     )

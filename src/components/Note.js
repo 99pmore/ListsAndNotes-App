@@ -1,8 +1,8 @@
 export const Note = () => {
 
     return (
-        <div>
-            <h1>Nota</h1>
+        <div className="note-body">
+            <textarea className="text-area"></textarea>
         </div>
     )
 }

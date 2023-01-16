@@ -33,4 +33,27 @@ form {
             align-items: center;
         }
     }
+
+    .body {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 20px;
+
+        .add-button {
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+
+            width: 50%;
+            height: 40px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
