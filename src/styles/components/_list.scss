@@ -1,0 +1,50 @@
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 40px;
+
+    .list-head {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+
+        .item {
+            border: none;
+            border-radius: 8px;
+    
+            width: 500px;
+            height: 40px;
+            padding: 20px;
+        }
+    
+        .add-item {
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+    
+            width: 40px;
+            height: 40px;
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .list-body {
+        ul {
+            list-style: none;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+}
