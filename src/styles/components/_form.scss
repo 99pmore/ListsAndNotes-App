@@ -22,8 +22,10 @@ form {
     
         button {
             cursor: pointer;
-            border: none;
+            border: 1px solid white;
             border-radius: 8px;
+            background: none;
+            color: white;
     
             width: 40px;
             height: 40px;
@@ -31,6 +33,14 @@ form {
             display: flex;
             justify-content: center;
             align-items: center;
+
+            transition: all 0.2s;
+
+            &:hover {
+                border: none;
+                background: white;
+                color: black;
+            }
         }
     }
 
@@ -40,8 +50,10 @@ form {
 
     .add-button {
         cursor: pointer;
-        border: none;
+        border: 1px solid white;
         border-radius: 8px;
+        background: none;
+        color: white;
 
         width: 50%;
         height: 40px;
@@ -49,5 +61,11 @@ form {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &:hover {
+            border: none;
+            background: white;
+            color: black;
+        }
     }
 }
