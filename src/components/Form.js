@@ -62,6 +62,7 @@ export const Form = () => {
 
     const reset = () => {
         setTitle('')
+        document.querySelector('input').value = ''
         setItems([])
         setList({ title: '', items: [] })
         setNote({ title: '', body: '' })
