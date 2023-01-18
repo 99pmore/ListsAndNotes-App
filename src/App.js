@@ -1,11 +1,13 @@
-import { Form } from './components/Form'
+import { Form } from "./components/Form";
+import { Content } from "./components/Content";
 
 function App() {
-  return (
-    <div className="App">
-      <Form />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Form />
+            <Content />
+        </div>
+    );
 }
 
 export default App;
