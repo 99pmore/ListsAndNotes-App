@@ -33,6 +33,7 @@ body {
     font-family: $main-font;
     background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
     // background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    background-attachment: fixed;
 
     width: 100%;
     height: 100vh;
