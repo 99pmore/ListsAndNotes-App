@@ -36,27 +36,22 @@ export const Form = () => {
         if (isList) {
             setList({ title: title, items: items })
 
-            push(ref(db, 'lists/'), {
+            push(ref(db, 'info/lists/'), {
                 title: title,
                 items: items
             })
     
-            setTitle('')
-            setItems([])
-            setList({ title: '', items: [] })
-            setCurrentComponent()
+            reset()
             
         } else {
             setNote({ ...note, title: title })
 
-            push(ref(db, 'notes/'), {
+            push(ref(db, 'info/notes/'), {
                 title: title,
                 body: note.body
             })
     
-            setTitle('')
-            setNote({ title: '', body: '' })
-            setCurrentComponent()
+            reset()
         }
     }
 
