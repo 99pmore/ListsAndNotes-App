@@ -45,11 +45,13 @@ export const Content = () => {
 
     return (
         <div className="content">
-            {
-                info.map((item, index) => (
-                    <Card key={ index } title={ item.title } body={ item.body } items={ item.items } />
-                ))
-            }
+            <div className="notes">
+                {
+                    info.map((item, index) => (
+                        <Card key={ index } title={ item.title } body={ item.body } items={ item.items } />
+                    ))
+                }
+            </div>
         </div>
     )
 }
