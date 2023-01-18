@@ -40,8 +40,6 @@ export const Form = () => {
                 title: title,
                 items: items
             })
-    
-            reset()
             
         } else {
             setNote({ ...note, title: title })
@@ -50,9 +48,9 @@ export const Form = () => {
                 title: title,
                 body: note.body
             })
-    
-            reset()
         }
+
+        reset()
     }
 
     const reset = () => {
