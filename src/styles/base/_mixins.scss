@@ -1,0 +1,24 @@
+@mixin create-button($border-color, $color, $width, $bg-hover, $color-hover) {
+    cursor: pointer;
+    font-family: $main-font;
+    font-size: 0.8rem;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: none;
+    color: $color;
+
+    width: $width;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.2s;
+
+    &:hover {
+        border: none;
+        background: $bg-hover;
+        color: $color-hover;
+    }
+}
