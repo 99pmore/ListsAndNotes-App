@@ -1,11 +1,16 @@
 form {
+    // width: 100%;
+    
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     flex-direction: column;
     gap: 40px;
 
     .head {
+        width: 100%;
+        max-width: 620px;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,22 +22,26 @@ form {
             border: none;
             border-radius: 8px;
     
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
             height: 40px;
             padding: 20px;
         }
     
         button {
             @include create-button(white, white, 40px, white, black);
+            min-width: 40px;
         }
     }
 
     .body {
         width: 100%;
+        max-width: 620px;
     }
 
     .buttons {
         width: 100%;
+        max-width: 620px;
         
         display: flex;
         justify-content: flex-end;

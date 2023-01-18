@@ -1,0 +1,17 @@
+.card {
+    // background: white;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    box-shadow:  18px 18px 68px #29323c,
+                -18px -18px 68px #485563;
+
+    min-width: 200px;
+    max-width: 350px;
+    padding: 20px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
