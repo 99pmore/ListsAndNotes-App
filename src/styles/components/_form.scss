@@ -1,5 +1,5 @@
 form {
-    // width: 100%;
+    width: 100%;
     
     display: flex;
     justify-content: center;
@@ -9,7 +9,6 @@ form {
 
     .head {
         width: 100%;
-        max-width: 620px;
 
         display: flex;
         justify-content: center;
@@ -36,7 +35,6 @@ form {
 
     .body {
         width: 100%;
-        max-width: 620px;
     }
 
     .buttons {
