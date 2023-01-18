@@ -1,7 +1,7 @@
 export const ListItems = ({ item }) => {
 
     return (
-        <li>
+        <li className="item">
             { item }
         </li>
     )
