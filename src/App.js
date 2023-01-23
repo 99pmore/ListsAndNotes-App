@@ -10,7 +10,7 @@ function App() {
 
     return (
         <div className="App">
-            <Login setUser={ setUser } />
+            <Login user={ user } setUser={ setUser } />
             <Form user={ user } />
             <Content user={ user } />
         </div>

@@ -1,7 +1,15 @@
+import { useState } from "react";
+import { UserInfo } from "./UserInfo";
+
 import { auth } from "../config/firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
-export const Login = ({ setUser }) => {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
+
+export const Login = ({ user, setUser }) => {
+
+    const [isLogged, setIsLogged] = useState()
 
     const provider = new GoogleAuthProvider()
 
@@ -9,7 +17,7 @@ export const Login = ({ setUser }) => {
         signInWithPopup(auth, provider)
         .then((result) => {
             setUser(result.user)
-            
+            setIsLogged(true)
         })
         .catch((error) => {
             const errorMsg = error.message
@@ -20,7 +28,7 @@ export const Login = ({ setUser }) => {
     const logout = () => {
         signOut(auth).then(() => {
             setUser()
-            
+            setIsLogged(false)
           }).catch((error) => {
             const errorMsg = error.message
             alert(errorMsg)
@@ -29,8 +37,19 @@ export const Login = ({ setUser }) => {
 
     return (
         <div className="container">
-            <button onClick={ login }>Iniciar sesión</button>
-            <button onClick={ logout }>Cerrar sesión</button>
+
+        {
+            !isLogged ?
+                <div className="not-logged">
+                    <button onClick={ login }>Iniciar sesión</button>
+                </div>
+            : 
+                <div className="logged">
+                    <UserInfo user={ user } />
+                    <button onClick={ logout }><FontAwesomeIcon icon={ faArrowRightToBracket } /></button>
+                </div>
+        }
+
         </div>
     )
 }
