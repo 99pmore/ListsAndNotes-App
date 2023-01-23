@@ -1,6 +1,26 @@
 .container {
-    button {
-        width: 120px;
-        height: 40px;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .not-logged {
+
+        button {
+            @include create-button(white, white, 120px, white, black);
+        }
+    }
+
+    .logged {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        button {
+            @include create-button(white, white, 40px, white, black);
+            min-width: 40px;
+        }
     }
 }
