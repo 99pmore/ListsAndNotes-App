@@ -50,6 +50,9 @@ export const Form = ({ user }) => {
                     body: note.body
                 })
             }
+
+        } else {
+            alert('Inicia sesión para añadir notas')
         }
 
         reset()
