@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faNoteSticky } from "@fortawesome/free-regular-svg-icons";
 
-export const Form = () => {
+export const Form = ({ user }) => {
 
     const [currentComponent, setCurrentComponent] = useState()
     const [title, setTitle] = useState('')
@@ -33,21 +33,23 @@ export const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (isList) {
-            setList({ title: title, items: items })
-
-            push(ref(db, 'info/lists/'), {
-                title: title,
-                items: items
-            })
-            
-        } else {
-            setNote({ ...note, title: title })
-
-            push(ref(db, 'info/notes/'), {
-                title: title,
-                body: note.body
-            })
+        if (user) {
+            if (isList) {
+                setList({ title: title, items: items })
+    
+                push(ref(db, `users/${user.uid}/info/lists/`), {
+                    title: title,
+                    items: items
+                })
+                
+            } else {
+                setNote({ ...note, title: title })
+    
+                push(ref(db, `users/${user.uid}/info/notes/`), {
+                    title: title,
+                    body: note.body
+                })
+            }
         }
 
         reset()

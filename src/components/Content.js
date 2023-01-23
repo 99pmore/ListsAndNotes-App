@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Card } from "./Card"
 
-import { db } from "../config/firebase";
+import { db, auth } from "../config/firebase";
 import { onValue, ref } from "firebase/database";
 
-export const Content = () => {
+export const Content = ({ user }) => {
 
     const [info, setInfo] = useState([])
     const [lists, setLists] = useState([])
@@ -14,33 +14,45 @@ export const Content = () => {
         getData()
     }, [])
 
+    useEffect(() => {
+        if (user) {
+            getData()
+
+        } else {
+            setNotes([])
+            setLists([])
+            setInfo([])
+        }
+    }, [user])
 
     const getData = () => {
-        const dbRefList = ref(db, 'info/lists/')
+        if (user) {
+            const dbRefList = ref(db, `users/${user.uid}/info/lists/`)
     
-        onValue(dbRefList, (snapshot) => {
-            let lists = []
-            snapshot.forEach((childSnapshot) => {
-                const data = childSnapshot.val()
-                lists.push(data)
-            })
-    
-            setLists(lists)
-
-            const dbRefNotes = ref(db, 'info/notes/')
-    
-            onValue(dbRefNotes, (snapshot) => {
-                let notes = []
+            onValue(dbRefList, (snapshot) => {
+                let lists = []
                 snapshot.forEach((childSnapshot) => {
                     const data = childSnapshot.val()
-                    notes.push(data)
+                    lists.push(data)
                 })
+        
+                setLists(lists)
     
-                setNotes(notes)
-
-                setInfo([...lists, ...notes])
+                const dbRefNotes = ref(db, `users/${user.uid}/info/notes/`)
+        
+                onValue(dbRefNotes, (snapshot) => {
+                    let notes = []
+                    snapshot.forEach((childSnapshot) => {
+                        const data = childSnapshot.val()
+                        notes.push(data)
+                    })
+        
+                    setNotes(notes)
+    
+                    setInfo([...lists, ...notes])
+                })
             })
-        })
+        }
     }
 
     return (

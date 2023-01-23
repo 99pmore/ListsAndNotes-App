@@ -1,34 +1,36 @@
 import { auth } from "../config/firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
-export const Login = () => {
+export const Login = ({ setUser }) => {
 
-    const provider = new GoogleAuthProvider();
+    const provider = new GoogleAuthProvider()
 
     const login = () => {
         signInWithPopup(auth, provider)
         .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            // ...
-        }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
+            setUser(result.user)
+            
         })
+        .catch((error) => {
+            const errorMsg = error.message
+            alert(errorMsg)
+        })
+    }
+
+    const logout = () => {
+        signOut(auth).then(() => {
+            setUser()
+            
+          }).catch((error) => {
+            const errorMsg = error.message
+            alert(errorMsg)
+          })
     }
 
     return (
         <div className="container">
-            <button onClick={ login }></button>
+            <button onClick={ login }>Iniciar sesión</button>
+            <button onClick={ logout }>Cerrar sesión</button>
         </div>
     )
 }
