@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "./Card"
 
-import { db, auth } from "../config/firebase";
+import { db } from "../config/firebase";
 import { onValue, ref } from "firebase/database";
 
 export const Content = ({ user }) => {
@@ -60,7 +60,7 @@ export const Content = ({ user }) => {
             <div className="notes">
                 {
                     info.map((item, index) => (
-                        <Card key={ index } title={ item.title } body={ item.body } items={ item.items } />
+                        <Card key={ index } title={ item.title } body={ item.body } items={ item.items } user={ user } />
                     ))
                 }
             </div>

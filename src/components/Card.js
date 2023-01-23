@@ -1,8 +1,15 @@
 import { useState } from "react";
 
-export const Card = ({ title, body, items }) => {
+import { db } from "../config/firebase";
+import { remove, ref } from "firebase/database";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+
+export const Card = ({ title, body, items, user }) => {
 
     const [checkedItems, setCheckedItems] = useState([])
+    const [isList, setIsList] = useState(true)
 
     const handleCheckboxChange = (index) => {
         if (checkedItems.includes(index)) {
@@ -11,6 +18,15 @@ export const Card = ({ title, body, items }) => {
         } else {
             setCheckedItems([ ...checkedItems, index ])
         }
+    }
+
+    const deleteNote = () => {
+        // if (isList) {
+        //     remove(ref(db, `users/${user.uid}/info/lists/${}`))
+            
+        // } else {
+        //     remove(ref(db, `users/${user.uid}/info/notes/`))
+        // }
     }
 
     const listItems = items ? items.map((item, index) => (
@@ -25,6 +41,8 @@ export const Card = ({ title, body, items }) => {
             <h3 className="title">{ title }</h3>
             <p className="note-body">{ body }</p>
             <ul className="list-items">{ listItems }</ul>
+
+            <div className="trash" onClick={ deleteNote } ><FontAwesomeIcon icon={ faTrashCan } /></div>
         </div>
     )
 }
