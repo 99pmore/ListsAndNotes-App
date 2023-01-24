@@ -33,6 +33,7 @@ export const Content = ({ user }) => {
                 let lists = []
                 snapshot.forEach((childSnapshot) => {
                     const data = childSnapshot.val()
+                    data.listId = childSnapshot.key
                     lists.push(data)
                 })
         
@@ -44,6 +45,7 @@ export const Content = ({ user }) => {
                     let notes = []
                     snapshot.forEach((childSnapshot) => {
                         const data = childSnapshot.val()
+                        data.noteId = childSnapshot.key
                         notes.push(data)
                     })
         
@@ -60,8 +62,8 @@ export const Content = ({ user }) => {
             <div className="notes">
                 {
                     info.map((item, index) => (
-                        <Card key={ index } title={ item.title } body={ item.body } items={ item.items } user={ user } />
-                    ))
+                        <Card key={ index } listId={ item.listId } noteId={ item.noteId } title={ item.title } body={ item.body } items={ item.items } user={ user } />
+                    ))                    
                 }
             </div>
         </div>
