@@ -29,7 +29,7 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
     }
 
     const listItems = items ? items.map((item, index) => (
-        <li>
+        <li key={`${listId}-${index}`}>
             <input type="checkbox" className={`${checkedItems.includes(index) ? 'is-checked' : ''}`} checked={ checkedItems.includes(index) } onChange={ () => handleCheckboxChange(index) } />
             <p key={index} className={checkedItems.includes(index) ? "strike" : ""}> { item }</p>
         </li>
