@@ -1,8 +1,7 @@
-export const ListItems = ({ item, handleCheckboxChange }) => {
+export const ListItems = ({ item }) => {
 
     return (
         <li className="item">
-            <input type="checkbox" onChange={ handleCheckboxChange } />
             { item.text }
         </li>
     )
