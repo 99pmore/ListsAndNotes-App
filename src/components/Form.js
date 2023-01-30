@@ -8,6 +8,7 @@ import { ref, push } from "firebase/database";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faNoteSticky } from "@fortawesome/free-regular-svg-icons";
+import Swal from "sweetalert2";
 
 export const Form = ({ user }) => {
 
@@ -52,7 +53,11 @@ export const Form = ({ user }) => {
             }
 
         } else {
-            alert('Inicia sesión para añadir notas')
+            Swal.fire(
+                'Inicia sesión para añadir notas',
+                '',
+                'error'
+            )
         }
 
         reset()
