@@ -14,14 +14,8 @@ export const List = ({ items: initialItems, setItems: setItemsParent }) => {
         setItem({ text: '', checkbox: false })
     }
 
-    const handleCheckboxChange = (index) => (e) => {
-        const newItems = [...items]
-        newItems[index].checkbox = e.target.checked
-        setItems(newItems)
-    }
-
     const listItems = items.map((item, index) =>
-        <ListItems key={ index } item={ item } handleCheckboxChange={ handleCheckboxChange } />
+        <ListItems key={ index } item={ item } />
     )
 
     return (
