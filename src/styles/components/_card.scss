@@ -1,14 +1,9 @@
 .card {
-    // background: rgb(247, 240, 247);
-    // box-shadow: 0 60px 60px -60px rgba(0, 0, 0, 0.45);
-    border-radius: 8px;
-
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: #f7f0f7;
+    background-size: 30px 30px;
+    background-image:  repeating-linear-gradient(0deg, #ffb0be80, #ffb0bf80 1.5px, #f7f0f780 1.5px, #f7f0f780);
+    box-shadow: 0 60px 60px -60px rgba(0, 0, 0, 0.45);
+    opacity: 0.8;
 
     min-width: 200px;
     max-width: 350px;
@@ -25,9 +20,8 @@
     transition: all 0.25s;
 
     &:hover {
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        transform: translateY(-20px);
+        box-shadow: 0 80px 80px -80px rgba(0, 0, 0, 0.65);
     }
 
     .note-body {
