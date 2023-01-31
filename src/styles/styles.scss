@@ -33,11 +33,9 @@
 
 body {
     font-family: $main-font;
-    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-    background-attachment: fixed;
-    
     background-color: #222;
     background-image: linear-gradient(45deg, #826c8faa 0%, #ba95d2aa 50%, #947aa6aa 100%);
+    background-attachment: fixed;
 
     .App {
         width: 100%;
