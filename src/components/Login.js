@@ -6,6 +6,7 @@ import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import logo from "../assets/logo-light.webp"
 
 export const Login = ({ user, setUser }) => {
 
@@ -38,17 +39,22 @@ export const Login = ({ user, setUser }) => {
     return (
         <div className="container">
 
-        {
-            !isLogged ?
-                <div className="not-logged">
-                    <button onClick={ login }>Iniciar sesión</button>
-                </div>
-            : 
-                <div className="logged">
-                    <UserInfo user={ user } />
-                    <button onClick={ logout }><FontAwesomeIcon icon={ faArrowRightToBracket } /></button>
-                </div>
-        }
+            <div className="logo">
+                <img src={ logo } alt="Logo" />
+                <span>Jot-It</span>
+            </div>
+
+            {
+                !isLogged ?
+                    <div className="not-logged">
+                        <button onClick={ login }>Iniciar sesión</button>
+                    </div>
+                : 
+                    <div className="logged">
+                        <UserInfo user={ user } />
+                        <button onClick={ logout }><FontAwesomeIcon icon={ faArrowRightToBracket } /></button>
+                    </div>
+            }
 
         </div>
     )

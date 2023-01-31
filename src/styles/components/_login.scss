@@ -2,8 +2,24 @@
     width: 100%;
 
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        img {
+            width: 70px;
+        }
+
+        span {
+            color: white;
+            font-size: 1.5rem;
+        }
+    }
 
     .not-logged {
 
@@ -24,3 +40,11 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+
+    .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+  }
