@@ -34,7 +34,7 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
             text: "",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#ffb0bf",
             cancelButtonColor: "#29323c",
             confirmButtonText: "Eliminar",
             cancelButtonText: "Cancelar"

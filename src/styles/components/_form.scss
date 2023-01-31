@@ -51,7 +51,7 @@ form {
         }
     
         .delete-button {
-            @include create-button(red, red, 50%, white, red);
+            @include create-button(white, white, 50%, #ffb0bf, black);
         }
     }
 }
