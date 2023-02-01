@@ -54,8 +54,45 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
         })
     }
 
-    const editNote = () => {
+    const editNote = (index) => {
+        if (body) {
+            Swal.fire({
+                input: 'textarea',
+                title: `${title}`,
+                inputValue: `${body}`,
+                showCancelButton: true,
+                confirmButtonColor: "#ba95d2",
+                cancelButtonColor: "#ffb0bf",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancelar",
+                // inputAttributes: {
+                //     'rows': '20'
+                // },
 
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const dbRef = ref(db, `users/${user.uid}/info/notes/${noteId}`)
+                    update(dbRef, { body: Swal.getInput().value })
+                }
+            })
+            
+        } else if (items) {
+            Swal.fire({
+                input: 'text',
+                title: `${title}`,
+                showCancelButton: true,
+                confirmButtonColor: "#ba95d2",
+                cancelButtonColor: "#ffb0bf",
+                confirmButtonText: "Añadir",
+                cancelButtonText: "Cancelar",
+                
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const dbRef = ref(db, `users/${user.uid}/info/lists/${listId}/items/${index}`)   
+                    update(dbRef, { text: Swal.getInput().value, checkbox: false })
+                }
+            })
+        }
     }
 
     const listItems = items ? items.map((item, index) => (
@@ -80,9 +117,9 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
             <div className="trash" onClick={ deleteNote }>
                 <FontAwesomeIcon icon={ faTrashCan } />
             </div>
-            {/* <div className="edit" onClick={ editNote }>
+            <div className="edit" onClick={ editNote }>
                 <FontAwesomeIcon icon={ faPenToSquare } />
-            </div> */}
+            </div>
         </div>
     )
 }
