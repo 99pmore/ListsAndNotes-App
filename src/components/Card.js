@@ -31,13 +31,13 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
     const deleteNote = () => {
         Swal.fire({
             title: "¿Estás seguro/a?",
-            text: "",
-            icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#ffb0bf",
-            cancelButtonColor: "#29323c",
+            confirmButtonColor: "#ba95d2",
+            cancelButtonColor: "#ffb0bf",
             confirmButtonText: "Eliminar",
-            cancelButtonText: "Cancelar"
+            cancelButtonText: "Cancelar",
+            icon: "warning",
+            iconColor: "#ba95d2"
 
         }).then((result) => {
             if (result.isConfirmed) {

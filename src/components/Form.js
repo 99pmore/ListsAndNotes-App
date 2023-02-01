@@ -53,11 +53,13 @@ export const Form = ({ user }) => {
             }
 
         } else {
-            Swal.fire(
-                'Inicia sesión para añadir notas',
-                '',
-                'error'
-            )
+            Swal.fire({
+                title: "Inicia sesión para añadir notas",
+                confirmButtonColor: "#ba95d2",
+                confirmButtonText: "Aceptar",
+                icon: "error",
+                iconColor: "#ffb0bf",
+            })
         }
 
         reset()
