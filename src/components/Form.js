@@ -15,8 +15,8 @@ export const Form = ({ user }) => {
     const [currentComponent, setCurrentComponent] = useState()
     const [title, setTitle] = useState('')
     const [items, setItems] = useState([])
-    const [list, setList] = useState({ title: title, items: items })
-    const [note, setNote] = useState({ title: title, body: '' })
+    const [list, setList] = useState({ title: title, items: items, date: '' })
+    const [note, setNote] = useState({ title: title, body: '', date: '' })
     const [isList, setIsList] = useState(true)
 
     const handleClickList = (e) => {
@@ -33,6 +33,14 @@ export const Form = ({ user }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        
+        const today = new Date()
+        const day = today.getDate()
+        const month = today.getMonth() + 1
+        const year = today.getFullYear()
+        const hour = today.getHours()
+        const minute = today.getMinutes()
+        const second = today.getSeconds()
 
         if (user) {
             if (isList) {
@@ -40,15 +48,17 @@ export const Form = ({ user }) => {
     
                 push(ref(db, `users/${user.uid}/info/lists/`), {
                     title: title,
-                    items: items
+                    items: items,
+                    date: `${year}-${month}-${day} ${hour}:${minute}:${second}`
                 })
                 
             } else {
                 setNote({ ...note, title: title })
-    
+                
                 push(ref(db, `users/${user.uid}/info/notes/`), {
                     title: title,
-                    body: note.body
+                    body: note.body,
+                    date: `${year}-${month}-${day} ${hour}:${minute}:${second}`
                 })
             }
 
