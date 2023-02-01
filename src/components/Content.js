@@ -51,7 +51,6 @@ export const Content = ({ user }) => {
         
                     setNotes(notes)
     
-                    // setInfo([...lists, ...notes])
                     setInfo([...lists, ...notes].sort((a, b) => new Date(b.date) - new Date(a.date)))
                 })
             })
