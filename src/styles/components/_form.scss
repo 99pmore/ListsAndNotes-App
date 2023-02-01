@@ -27,7 +27,7 @@ form {
             padding: 20px;
 
             &:focus {
-                outline: 1px solid #ffb0bf;
+                outline: 1px solid $light-red;
             }
         }
     
@@ -55,7 +55,7 @@ form {
         }
     
         .delete-button {
-            @include create-button(white, white, 50%, #ffb0bf, black);
+            @include create-button(white, white, 50%, $light-red, black);
         }
     }
 }
