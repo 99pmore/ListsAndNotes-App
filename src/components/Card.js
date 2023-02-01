@@ -5,6 +5,7 @@ import { remove, update, ref } from "firebase/database";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import Swal from "sweetalert2";
 
 export const Card = ({ listId, noteId, title, body, items, user }) => {
@@ -53,6 +54,10 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
         })
     }
 
+    const editNote = () => {
+
+    }
+
     const listItems = items ? items.map((item, index) => (
               <li key={`${listId}-${index}`}>
                   <input
@@ -75,6 +80,9 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
             <div className="trash" onClick={ deleteNote }>
                 <FontAwesomeIcon icon={ faTrashCan } />
             </div>
+            {/* <div className="edit" onClick={ editNote }>
+                <FontAwesomeIcon icon={ faPenToSquare } />
+            </div> */}
         </div>
     )
 }
