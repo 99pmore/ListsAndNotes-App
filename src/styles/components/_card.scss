@@ -85,29 +85,29 @@
         }
     }
 
-    // .edit {
-    //     cursor: pointer;
-    //     background-image: linear-gradient(60deg, rgba(41, 50, 60, 0.75) 0%, rgba(72, 85, 99, 0.75) 100%);
-    //     color: white;
-    //     font-size: 0.8rem;
-    //     border: 1px solid white;
-    //     border-radius: 8px;
+    .edit {
+        cursor: pointer;
+        background-image: linear-gradient(60deg, rgba(41, 50, 60, 0.75) 0%, rgba(72, 85, 99, 0.75) 100%);
+        color: white;
+        font-size: 0.8rem;
+        border: 1px solid white;
+        border-radius: 8px;
 
-    //     width: 30px;
-    //     height: 30px;
+        width: 30px;
+        height: 30px;
 
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    //     position: absolute;
-    //     bottom: -10px;
-    //     right: 25px;
+        position: absolute;
+        bottom: -10px;
+        right: 25px;
 
-    //     transition: color 0.2s;
+        transition: color 0.2s;
 
-    //     &:hover {
-    //         color: $malva;
-    //     }
-    // }
+        &:hover {
+            color: $malva;
+        }
+    }
 }
