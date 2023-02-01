@@ -25,6 +25,10 @@ form {
             max-width: 500px;
             height: 40px;
             padding: 20px;
+
+            &:focus {
+                outline: 1px solid #ffb0bf;
+            }
         }
     
         button {

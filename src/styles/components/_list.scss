@@ -26,6 +26,10 @@
             max-width: 620px;
             height: 40px;
             padding: 20px;
+
+            &:focus {
+                outline: 1px solid #ffb0bf;
+            }
         }
     
         .add-item {
