@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { db } from "../config/firebase";
-import { remove, update, ref } from "firebase/database";
+import { remove, update, ref, set } from "firebase/database";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
@@ -43,6 +43,14 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire("Eliminado", "La nota se ha eliminado", "success")
+                Swal.fire({
+                    title: "Eliminado",
+                    text: `La ${listId ? "lista" : "nota"} se ha eliminado con éxito`,
+                    confirmButtonColor: "#ba95d2",
+                    confirmButtonText: "Aceptar",
+                    icon: "success",
+                    iconColor: "#ba95d2"
+                })
 
                 if (items) {
                     remove(ref(db, `users/${user.uid}/info/lists/${listId}`))
@@ -54,7 +62,7 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
         })
     }
 
-    const editNote = (index) => {
+    const editNote = () => {
         if (body) {
             Swal.fire({
                 input: 'textarea',
@@ -65,9 +73,6 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
                 cancelButtonColor: "#ffb0bf",
                 confirmButtonText: "Aceptar",
                 cancelButtonText: "Cancelar",
-                // inputAttributes: {
-                //     'rows': '20'
-                // },
 
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -88,8 +93,9 @@ export const Card = ({ listId, noteId, title, body, items, user }) => {
                 
             }).then((result) => {
                 if (result.isConfirmed) {
-                    const dbRef = ref(db, `users/${user.uid}/info/lists/${listId}/items/${index}`)   
-                    update(dbRef, { text: Swal.getInput().value, checkbox: false })
+                    const newItem = { text: Swal.getInput().value, checkbox: false };
+                    const dbRef = ref(db, `users/${user.uid}/info/lists/${listId}/items`)
+                    set(dbRef, [...items, newItem])
                 }
             })
         }
