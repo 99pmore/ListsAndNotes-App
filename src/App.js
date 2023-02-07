@@ -38,16 +38,9 @@ function App() {
 
     return (
         <div className="App">
-            {
-                loading && !user ?
-                <Loader />
-                :
-                <>
-                    <Login user={user} setUser={setUser} />
-                    <Form user={user} />
-                    <Content user={user} setLoading={setLoading} />
-                </>
-            }
+            <Login user={user} setUser={setUser} />
+            <Form user={user} />
+            <Content user={user} loading={loading} setLoading={setLoading} />
         </div>
     )
 }

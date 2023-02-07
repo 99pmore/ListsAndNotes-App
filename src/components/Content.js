@@ -5,7 +5,7 @@ import { Loader } from "../components/Loader";
 import { db } from "../config/firebase";
 import { onValue, ref } from "firebase/database";
 
-export const Content = ({ user, setLoading }) => {
+export const Content = ({ user, loading, setLoading }) => {
 
     const [info, setInfo] = useState([])
     const [lists, setLists] = useState([])
@@ -62,13 +62,18 @@ export const Content = ({ user, setLoading }) => {
 
     return (
         <div className="content">
-            <div className="notes">
-                {
-                    info.map((item, index) => (
-                        <Card key={ index } listId={ item.listId } noteId={ item.noteId } title={ item.title } body={ item.body } items={ item.items } user={ user } />
-                    ))                    
-                }
-            </div>
+            {
+                loading ?
+                <Loader />
+                :
+                <div className="notes">
+                    {
+                        info.map((item, index) => (
+                            <Card key={ index } listId={ item.listId } noteId={ item.noteId } title={ item.title } body={ item.body } items={ item.items } user={ user } />
+                        ))                    
+                    }
+                </div>
+            }
         </div>
     )
 }

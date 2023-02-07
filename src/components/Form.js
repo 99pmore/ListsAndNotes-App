@@ -96,7 +96,7 @@ export const Form = ({ user }) => {
                 {
                     user ?
                     currentComponent
-                    : <h2 className='login-warning'>Inicia sesión para añadir</h2>
+                    : <h2 className='login-warning'>Inicia sesión para añadir tus listas y notas</h2>
                 }
             </div>
 
