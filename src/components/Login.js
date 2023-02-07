@@ -41,7 +41,7 @@ export const Login = ({ user, setUser }) => {
 
             <div className="logo">
                 <img src={ logo } alt="Logo" />
-                <span>Jot-It</span>
+                <h1>Jot-It</h1>
             </div>
 
             {
