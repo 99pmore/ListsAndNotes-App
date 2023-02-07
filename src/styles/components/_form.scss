@@ -39,6 +39,12 @@ form {
 
     .body {
         width: 100%;
+
+        .login-warning {
+            text-align: center;
+            color: white;
+            font-weight: 500;
+        }
     }
 
     .buttons {

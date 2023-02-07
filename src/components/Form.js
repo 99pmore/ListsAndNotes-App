@@ -88,16 +88,20 @@ export const Form = ({ user }) => {
         <form onSubmit={ handleSubmit }>
             <div className='head'>
                 <input type='text' placeholder='Añade un título' onChange={ e => setTitle(e.target.value) } />
-                <button onClick={ handleClickList }><FontAwesomeIcon icon={ faList } /></button>
-                <button onClick={ handleClickNote }><FontAwesomeIcon icon={ faNoteSticky } /></button>
+                <button title='Lista' onClick={ handleClickList }><FontAwesomeIcon icon={ faList } /></button>
+                <button title='Nota' onClick={ handleClickNote }><FontAwesomeIcon icon={ faNoteSticky } /></button>
             </div>
 
             <div className='body'>
-                { currentComponent }
+                {
+                    user ?
+                    currentComponent
+                    : <h2 className='login-warning'>Inicia sesión para añadir</h2>
+                }
             </div>
 
             {
-                currentComponent ?
+                currentComponent && user ?
                     <div className="buttons">
                         <button type='reset' onClick={ reset } className='delete-button'>Borrar</button>
                         <button type='submit' className='add-button'>Añadir</button>
