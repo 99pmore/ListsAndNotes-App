@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { UserInfo } from "./UserInfo";
 
 import { auth } from "../config/firebase";
@@ -10,15 +9,12 @@ import logo from "../assets/logo-light.webp"
 
 export const Login = ({ user, setUser }) => {
 
-    const [isLogged, setIsLogged] = useState()
-
     const provider = new GoogleAuthProvider()
 
     const login = () => {
         signInWithRedirect(auth, provider)
         .then((result) => {
             setUser(result.user)
-            setIsLogged(true)
         })
         .catch((error) => {
             const errorMsg = error.message
@@ -29,7 +25,6 @@ export const Login = ({ user, setUser }) => {
     const logout = () => {
         signOut(auth).then(() => {
             setUser()
-            setIsLogged(false)
           }).catch((error) => {
             const errorMsg = error.message
             alert(errorMsg)
@@ -45,7 +40,7 @@ export const Login = ({ user, setUser }) => {
             </div>
 
             {
-                !isLogged ?
+                !user ?
                     <div className="not-logged">
                         <button onClick={ login }>Iniciar sesión</button>
                     </div>
