@@ -2,7 +2,7 @@
     background-color: #222;
     background-image: linear-gradient(45deg, #826c8faa 0%, #ba95d2aa 50%, #947aa6aa 100%);
     background-attachment: fixed;
-    
+
     width: 100%;
     height: 100vh;
 
@@ -13,13 +13,13 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
 
     .loader {
         width: 200px;
         height: 60px;
 
         position: relative;
-        z-index: 1;
     }
     
     .circle {
