@@ -2,7 +2,7 @@ import { useState } from "react";
 import { UserInfo } from "./UserInfo";
 
 import { auth } from "../config/firebase";
-import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { signInWithRedirect, GoogleAuthProvider, signOut } from "firebase/auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +15,7 @@ export const Login = ({ user, setUser }) => {
     const provider = new GoogleAuthProvider()
 
     const login = () => {
-        signInWithPopup(auth, provider)
+        signInWithRedirect(auth, provider)
         .then((result) => {
             setUser(result.user)
             setIsLogged(true)
