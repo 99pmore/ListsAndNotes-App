@@ -10,7 +10,7 @@ import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faNoteSticky } from "@fortawesome/free-regular-svg-icons";
 import Swal from "sweetalert2";
 
-export const Form = ({ user }) => {
+export const Form = ({ user, loading }) => {
 
     const [currentComponent, setCurrentComponent] = useState()
     const [title, setTitle] = useState('')
@@ -96,6 +96,8 @@ export const Form = ({ user }) => {
                 {
                     user ?
                     currentComponent
+                    : loading ?
+                    null
                     : <h2 className='login-warning'>Inicia sesión para añadir tus listas y notas</h2>
                 }
             </div>

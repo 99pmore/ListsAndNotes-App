@@ -11,9 +11,9 @@ export const Content = ({ user, loading, setLoading }) => {
     const [lists, setLists] = useState([])
     const [notes, setNotes] = useState([])
 
-    useEffect(() => {
-        getData()
-    }, [])
+    // useEffect(() => {
+    //     getData()
+    // }, [])
 
     useEffect(() => {
         if (user) {

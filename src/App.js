@@ -23,23 +23,23 @@ function App() {
         })
     }, [])
 
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
-        } else {
-            localStorage.removeItem("user");
-        }
-    }, [user])
+    // useEffect(() => {
+    //     if (user) {
+    //         localStorage.setItem("user", JSON.stringify(user));
+    //     } else {
+    //         localStorage.removeItem("user");
+    //     }
+    // }, [user])
 
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        setUser(user);
-    }, [])
+    // useEffect(() => {
+    //     const user = JSON.parse(localStorage.getItem("user"));
+    //     setUser(user);
+    // }, [])
 
     return (
         <div className="App">
             <Login user={user} setUser={setUser} />
-            <Form user={user} />
+            <Form user={user} loading={loading} />
             <Content user={user} loading={loading} setLoading={setLoading} />
         </div>
     )
