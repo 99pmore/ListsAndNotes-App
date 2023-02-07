@@ -62,7 +62,7 @@ export const Content = ({ user }) => {
         <div className="content">
 
             { 
-                isLoading ? <Loader /> 
+                isLoading && user ? <Loader /> 
                 
                 : (
                     <div className="notes">
@@ -72,7 +72,7 @@ export const Content = ({ user }) => {
                     </div>
                 )
             }
-            
+
         </div>
     )
 }
