@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Card } from "./Card"
-
+import { Loader } from './Loader';
 import { db } from "../config/firebase";
 import { onValue, ref } from "firebase/database";
 
 export const Content = ({ user }) => {
-
     const [info, setInfo] = useState([])
     const [lists, setLists] = useState([])
     const [notes, setNotes] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         getData()
@@ -17,7 +17,6 @@ export const Content = ({ user }) => {
     useEffect(() => {
         if (user) {
             getData()
-
         } else {
             setNotes([])
             setLists([])
@@ -27,8 +26,9 @@ export const Content = ({ user }) => {
 
     const getData = () => {
         if (user) {
+            setIsLoading(true)
             const dbRefList = ref(db, `users/${user.uid}/info/lists/`)
-    
+
             onValue(dbRefList, (snapshot) => {
                 let lists = []
                 snapshot.forEach((childSnapshot) => {
@@ -36,11 +36,11 @@ export const Content = ({ user }) => {
                     data.listId = childSnapshot.key
                     lists.push(data)
                 })
-        
+
                 setLists(lists)
-    
+
                 const dbRefNotes = ref(db, `users/${user.uid}/info/notes/`)
-        
+
                 onValue(dbRefNotes, (snapshot) => {
                     let notes = []
                     snapshot.forEach((childSnapshot) => {
@@ -48,10 +48,11 @@ export const Content = ({ user }) => {
                         data.noteId = childSnapshot.key
                         notes.push(data)
                     })
-        
+
                     setNotes(notes)
-    
+
                     setInfo([...lists, ...notes].sort((a, b) => new Date(b.date) - new Date(a.date)))
+                    setIsLoading(false)
                 })
             })
         }
@@ -59,13 +60,19 @@ export const Content = ({ user }) => {
 
     return (
         <div className="content">
-            <div className="notes">
-                {
-                    info.map((item, index) => (
-                        <Card key={ index } listId={ item.listId } noteId={ item.noteId } title={ item.title } body={ item.body } items={ item.items } user={ user } />
-                    ))                    
-                }
-            </div>
+
+            { 
+                isLoading ? <Loader /> 
+                
+                : (
+                    <div className="notes">
+                        { info.map((item, index) => (
+                            <Card key={index} listId={item.listId} noteId={item.noteId} title={item.title} body={item.body} items={item.items} user={user} />
+                        )) }
+                    </div>
+                )
+            }
+            
         </div>
     )
 }
